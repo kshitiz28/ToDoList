@@ -20,5 +20,33 @@ namespace To_Do_List_Management_System_.Controllers
 
             return View(objTodoList);
         }
+
+        //GET
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        //POST
+
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]  //to help and prevent the cross site request forgery attack.
+        //public IActionResult Create(todo obj)
+        //{
+        //    if (obj.Name == obj.DisplayOrder.ToString())
+        //    {
+        //        ModelState.AddModelError("name", "The DisplayOrder cannot exactly match the Name.");
+        //    }
+        //    if (ModelState.IsValid)
+        //    {
+        //        _db.Categories.Add(obj);
+        //        _db.SaveChanges();
+        //        TempData["success"] = "Category created Successfully.";
+        //        return RedirectToAction("Index");
+        //    }
+
+        //    return View(obj);
+
+        //}
     }
 }

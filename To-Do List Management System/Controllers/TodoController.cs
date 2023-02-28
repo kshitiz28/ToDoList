@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using To_Do_List_Management_System_.Data;
+using To_Do_List_Management_System_.Models;
 
 namespace To_Do_List_Management_System_.Controllers
 {
@@ -15,7 +16,9 @@ namespace To_Do_List_Management_System_.Controllers
         }
         public IActionResult Index()
         {
-            return View();
+            IEnumerable<todo> objTodoList = _db.TODOs;
+
+            return View(objTodoList);
         }
     }
 }

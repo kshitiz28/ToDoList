@@ -3,3 +3,31 @@
 @{
     ViewData["Title"] = "Index";
 }
+
+<div>
+    <h2 class="text-center"> TODO List</h2>
+</div>
+<br />
+<br />
+<br />
+<br />
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">Title</th>
+            <th scope="col">Importance</th>
+            <th scope="col">Date And Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="table-primary">
+            @foreach (var obj in Model)
+            {
+                <th scope="row">@obj.title</th>
+                <td>@obj.importance</td>
+                <td>@obj.CreatedDateTime</td>
+            }
+        </tr>
+    </tbody>
+</table>

@@ -1,8 +1,38 @@
 ﻿@model todo
 
-@{
-    ViewData["Title"] = "Create";
+<form method="post">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">Create New Todo</h2>
+    <hr/>
+        </div>
+        @*<div asp-validation-summary="All"></div>*@
+        <div class="mb-3">
+            <label asp-for="title">Title</label>
+            <input asp-for="title" class="form-control" />
+            <span asp-validation-for="title" class="text-danger"></span> @*displays validation message in frontend*@
+        </div>
+        <div class="mb-3">
+            <label asp-for="importance">Importance</label>
+            <input asp-for="importance" class="form-control" />
+            <span asp-validation-for="importance" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="CreatedDateTime">Final Date and Time</label>
+            <input asp-for="CreatedDateTime" class="form-control" />
+            <span asp-validation-for="CreatedDateTime" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:150px">Create</button>
+        <a asp-controller="Todo" asp-action="Index" class="btn btn-secondary" style="width:150px">
+            Back to List
+        </a>
+    </div>
+
+</form>
+
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
 }
-
-<h1>Create</h1>
-

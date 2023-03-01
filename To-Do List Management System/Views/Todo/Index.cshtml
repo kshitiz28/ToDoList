@@ -29,14 +29,15 @@
         </tr>
     </thead>
     <tbody>
-        <tr class="table-primary">
             @foreach (var obj in Model)
             {
-                <th scope="row">@obj.title</th>
-                <td>@obj.importance</td>
-                <td>@obj.CreatedDateTime</td>
+                <tr class="table-primary">
+                    <td scope="row">@obj.title</td>
+                    <td>@obj.importance</td>
+                    <td>@obj.CreatedDateTime</td>
+                </tr>
             }
-        </tr>
+
     </tbody>
 </table>
 

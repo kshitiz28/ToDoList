@@ -29,24 +29,24 @@ namespace To_Do_List_Management_System_.Controllers
 
         //POST
 
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]  //to help and prevent the cross site request forgery attack.
-        //public IActionResult Create(todo obj)
-        //{
-        //    if (obj.Name == obj.DisplayOrder.ToString())
-        //    {
-        //        ModelState.AddModelError("name", "The DisplayOrder cannot exactly match the Name.");
-        //    }
-        //    if (ModelState.IsValid)
-        //    {
-        //        _db.Categories.Add(obj);
-        //        _db.SaveChanges();
-        //        TempData["success"] = "Category created Successfully.";
-        //        return RedirectToAction("Index");
-        //    }
+        [HttpPost]
+        [ValidateAntiForgeryToken]  //to help and prevent the cross site request forgery attack.
+        public IActionResult Create(todo obj)
+        {
+            if (obj.title == obj.importance.ToString())
+            {
+                ModelState.AddModelError("name", "The DisplayOrder cannot exactly match the Name.");
+            }
+            if (ModelState.IsValid)
+            {
+                _db.TODOs.Add(obj);
+                _db.SaveChanges();
+                //TempData["success"] = "Category created Successfully.";
+                return RedirectToAction("Index");
+            }
 
-        //    return View(obj);
+            return View(obj);
 
-        //}
+        }
     }
 }

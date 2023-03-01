@@ -48,5 +48,51 @@ namespace To_Do_List_Management_System_.Controllers
             return View(obj);
 
         }
+
+        //GET
+        public IActionResult Edit(int? id) //int? id means we can have the route satisfied without an id also.
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+
+            //3 ways to create category from database.
+            var TodoFromDb = _db.TODOs.Find(id); //find uses primary key to find.
+            //var categoryFromDbFirst = _db.Categories.FirstOrDefault(u => u.Id == id);
+            //var categoryFromDbSingle = _db.Categories.SingleOrDefault(u => u.Id == id);
+
+
+            if (TodoFromDb == null)
+            {
+                return NotFound();
+            }
+
+            return View(TodoFromDb);
+        }
+
+        //POST
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]  //to help and prevent the cross site request forgery attack.
+        public IActionResult Edit(todo obj)
+        {
+            if (obj.title == obj.importance.ToString())
+            {
+                ModelState.AddModelError("name", "The DisplayOrder cannot exactly match the Name.");
+            }
+            if (ModelState.IsValid)
+            {
+                _db.TODOs.Update(obj);
+                _db.SaveChanges();
+                //TempData["success"] = "Todo updated Successfully.";
+                return RedirectToAction("Index");
+            }
+
+            return View(obj);
+
+        }
+
+
     }
 }

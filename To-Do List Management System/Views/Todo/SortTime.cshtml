@@ -1,0 +1,40 @@
+﻿@model IEnumerable<todo>
+
+@{
+    ViewData["Title"] = "SortTime";
+}
+
+<div class="container p-3">
+    <div class="col pt-4">
+        <div class="col-6 m-auto">
+            <h2 class="text-info">Sorted By Importance</h2>
+        </div>
+    </div>
+    <br />
+    <br />
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Title</th>
+                <th scope="col">Importance</th>
+                <th scope="col">Date And Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var obj in Model)
+            {
+                    <tr class="table-primary">
+                        <td scope="row">@obj.title</td>
+                        <td>@obj.importance</td>
+                        <td>@obj.CreatedDateTime</td>
+                    </tr>
+            }
+
+        </tbody>
+    </table>
+    <a asp-controller="Todo" asp-action="Index" class="btn btn-secondary" style="width:150px">
+        Back to List
+    </a>
+
+</div>

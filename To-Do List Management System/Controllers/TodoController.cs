@@ -142,5 +142,15 @@ namespace To_Do_List_Management_System_.Controllers
             return View(newSorted);
         }
 
+        //GET
+        public IActionResult SortTime()
+        {
+            IEnumerable<todo> objTodoList = _db.TODOs;
+
+            IEnumerable<todo> newSorted = objTodoList.OrderByDescending(x => x.importance);
+
+            return View(newSorted);
+        }
+
     }
 }

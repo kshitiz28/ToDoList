@@ -147,7 +147,8 @@ namespace To_Do_List_Management_System_.Controllers
         {
             IEnumerable<todo> objTodoList = _db.TODOs;
 
-            IEnumerable<todo> newSorted = objTodoList.OrderByDescending(x => x.importance);
+            DateTime now =DateTime.Now;
+            IEnumerable<todo> newSorted = objTodoList.OrderBy(x => x.CreatedDateTime - now);
 
             return View(newSorted);
         }
